@@ -1,0 +1,28 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "compilerOptions": {
+    "lib": [
+      "es2017"
+    ],
+    "baseUrl": ".",
+    "types": [
+      "vite/client",
+      "element-plus/global",
+      "unplugin-icons/types/vue"
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    },
+    "skipLibCheck": true
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.vite-config.json"
+    }
+  ]
+}
