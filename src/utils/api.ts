@@ -7,7 +7,7 @@ axios.defaults.withCredentials = true;
 const service = axios.create({
   baseURL: baseURL + 'api/',
   timeout: 5000
-});
+} as any);
 
 service.interceptors.response.use(
   (res) => {
@@ -29,7 +29,7 @@ export interface LoginRequest {
 export interface RegisterRequest {
   user_id: string;
   password: string;
-  tags: string;
+  // tags: string;
 }
 
 // RESPONSE STRUCTURE ---------------------------------------------------------
@@ -49,7 +49,7 @@ export interface PostResponse {
   post_date: string;
   text: string;
   image_url: string;
-  tags: string;
+  tags: Array<string>;
   captioning: string;
 }
 
@@ -57,14 +57,14 @@ export interface PostResponse {
 export function login(request: LoginRequest, success: () => void, fail: (err: ErrorResponse) => void) {
   service
     .post('login', request)
-    .then((res) => success())
+    .then(() => success())
     .catch((err) => fail(err.data));
 }
 
 export function register(request: RegisterRequest, success: () => void, fail: (err: ErrorResponse) => void) {
   service
     .post('register', request)
-    .then((res) => success())
+    .then(() => success())
     .catch((err) => fail(err.data));
 }
 
@@ -99,7 +99,7 @@ export function getPost(id: number, success: (res: PostResponse) => void, fail: 
 export function deletePost(id: number, success: () => void, fail: (err: ErrorResponse) => void) {
   service
     .delete('posts/' + id)
-    .then((res) => success())
+    .then(() => success())
     .catch((err) => fail(err.data));
 }
 
